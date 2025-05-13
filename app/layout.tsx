@@ -7,8 +7,8 @@ import Footer from "@/components/footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "ChatKSU - Smart Assistant for King Saud University",
-  description: "AI-powered smart assistant for King Saud University students and faculty",
+  title: "Ubayyah",        
+  description: "Your Smart Sport Health Tracker",
     generator: 'v0.dev'
 }
 

@@ -1,33 +1,27 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import ChatKsuLogo from "@/components/ChatKsuLogo";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About", href: "/About" },
-    { name: "ChatKSU", href: "/ChatKSU" },
+    { name: "Dashboard", href: "/Dashboard" },
     { name: "Team", href: "/team" },
     { name: "FAQ", href: "/Faq" },
-  ]
+  ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-ksu-beige text-ksu-black">
-      <div className="container mx-auto h-24 px-4 flex items-center justify-between">
-        {/* Left - KSU Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="\KSU_ShieldLogo_Colour_RGB.png"
-            alt="KSU Logo"
-            width={50}
-            height={48}
-          />
-          <span className="font-bold text-2xl text-ksu-blue">ChatKSU</span>
+    <header className="sticky top-0 z-50 w-full border-b-2 border-[#9c6544] bg-[#471b0a] text-[#d19e74] shadow-lg">
+      <div className="container mx-auto h-20 px-4 flex items-center justify-between">
+        {/* Left - Logo */}
+        <Link href="/" className="flex items-end gap-0.5">
+          <div className="text-[#d19e74] text-5xl font-extrabold leading-none">U</div>
+          <span className="text-[#d19e74] text-3xl font-bold">bayyah</span>
         </Link>
 
         {/* Center - Navigation */}
@@ -36,8 +30,10 @@ export default function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className={`text-base font-medium transition-colors hover:text-ksu-blue ${
-                pathname === item.href ? "text-ksu-blue" : "text-ksu-gray"
+              className={`text-lg font-semibold transition-colors ${
+                pathname === item.href
+                  ? "text-[#d19e74] border-b-2 border-[#9c6544]" // Active link style
+                  : "text-[#9c6544] hover:text-[#d19e74]" // Hover effect
               }`}
             >
               {item.name}
@@ -45,16 +41,17 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right - Placeholder Logo */}
+        {/* Right - Secondary Logo */}
         <div className="hidden md:flex">
           <Image
-            src="\hksu-our-ksu-logo.png" // Replace with your own image path
+            src="\HealthonLogo_white.png" // Replace with your secondary logo path
             alt="Secondary Logo"
-            width={350}
-            height={48}
+            width={240}
+            height={40}
+            className="opacity-80"
           />
         </div>
       </div>
     </header>
-  )
+  );
 }

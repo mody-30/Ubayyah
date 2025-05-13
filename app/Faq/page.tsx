@@ -1,103 +1,104 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/accordion";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 export default function FAQPage() {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
 
   const faqs = [
     {
-      question: "What is ChatKSU?",
+      question: "What is Ubayyah?",
       answer:
-        "ChatKSU is an AI-powered smart assistant designed specifically for King Saud University students and faculty. It provides instant answers to questions about courses, schedules, university policies, campus services, and more.",
+        "Ubayyah is a smart wristband and data-powered platform that monitors your brain's performance and body health using AI, statistics, and intelligent assistant features.",
     },
     {
-      question: "How do I access ChatKSU?",
+      question: "Who can use Ubayyah?",
       answer:
-        "ChatKSU is available through the university portal, mobile app, and as a standalone web application. You can log in using your KSU credentials.",
+        "Ubayyah is designed for everyone—students, professionals, health-conscious individuals, and anyone who wants to better understand and improve their mental and physical well-being.",
     },
     {
-      question: "Is ChatKSU available 24/7?",
+      question: "What does Ubayyah monitor?",
       answer:
-        "Yes, ChatKSU is available 24 hours a day, 7 days a week to assist you with your questions and needs.",
+        "Ubayyah tracks metrics related to brain activity, stress levels, focus, physical health, and more through integrated smart sensors and analytics.",
     },
     {
-      question: "What kind of questions can ChatKSU answer?",
+      question: "Is Ubayyah easy to use?",
       answer:
-        "ChatKSU can answer questions about course schedules, registration procedures, campus facilities, academic policies, events, faculty information, and much more. It's designed to handle a wide range of university-related inquiries.",
+        "Yes, Ubayyah is built to be user-friendly. Just wear the wristband, and the platform will automatically collect and visualize your health and performance data.",
     },
     {
-      question: "Is my conversation with ChatKSU private?",
+      question: "Is my health data safe with Ubayyah?",
       answer:
-        "Yes, your conversations with ChatKSU are private and secure. We follow strict data protection protocols to ensure your information remains confidential.",
+        "Absolutely. We use strong encryption and privacy protocols to ensure your personal and health data stays secure and confidential.",
     },
     {
-      question: "Can ChatKSU help with my research?",
+      question: "Does Ubayyah support both English and Arabic?",
       answer:
-        "ChatKSU can provide general guidance on research resources available at KSU, direct you to relevant databases, and help you find faculty experts in your field of interest.",
+        "Yes, Ubayyah supports both English and Arabic for accessibility across diverse users.",
     },
     {
-      question: "What languages does ChatKSU support?",
+      question: "Can I share my data with doctors or coaches?",
       answer:
-        "Currently, ChatKSU supports both Arabic and English to serve the diverse KSU community.",
+        "Yes, Ubayyah allows you to export or securely share your data insights with healthcare professionals or coaches to support your goals.",
     },
-    {
-      question: "How accurate is the information provided by ChatKSU?",
-      answer:
-        "ChatKSU is trained on official KSU documentation and is regularly updated to ensure accuracy. However, for critical matters, we recommend verifying information through official university channels.",
-    },
-  ]
+  ];
 
   const filteredFaqs = faqs.filter(
     (faq) =>
       faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+      faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col min-h-[calc(100vh-4rem)] bg-[#471b0a] text-[#d19e74]">
       {/* Hero Section */}
-      <section className="w-full py-8 bg-ksu-beige">
-        <div className="container px-4 md:px-6 text-center space-y-2">
-          <h1 className="text-3xl sm:text-4xl font-bold text-ksu-blue">
+      <section className="w-full py-12 bg-[#7a3c1e]">
+        <div className="container px-4 md:px-6 text-center space-y-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#d19e74]">
             Frequently Asked Questions
           </h1>
-          <p className="max-w-xl mx-auto text-ksu-gray text-base">
-            Find answers to common questions about ChatKSU and how it can help you at King Saud University.
+          <p className="max-w-xl mx-auto text-[#2f0d00] text-lg">
+            Learn more about how Ubayyah empowers you to monitor your brain and body health.
           </p>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full py-8">
+      <section className="w-full py-12">
         <div className="container px-4 md:px-6">
-          <Card className="max-w-3xl mx-auto">
-            <CardContent className="p-4 sm:p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <Search className="text-gray-500 w-5 h-5" />
+          <Card className="max-w-3xl mx-auto bg-[#7a3c1e] border-[#9c6544]">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-2 mb-6">
+                <Search className="text-[#9c6544] w-5 h-5" />
                 <Input
                   type="text"
                   placeholder="Search FAQs..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1"
+                  className="flex-1 bg-[#471b0a] text-[#d19e74] placeholder-[#9c6544] border border-[#9c6544] focus:ring-2 focus:ring-[#d19e74] focus:outline-none"
                 />
               </div>
 
-              <Accordion type="single" collapsible className="space-y-1">
+              <Accordion type="single" collapsible className="space-y-2">
                 {filteredFaqs.map((faq, index) => (
-                  <AccordionItem value={`${index}`} key={index}>
-                    <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                    <AccordionContent className="text-sm text-muted-foreground">
+                  <AccordionItem
+                    value={`${index}`}
+                    key={index}
+                    className="bg-[#471b0a] border border-[#9c6544] rounded-lg"
+                  >
+                    <AccordionTrigger className="text-left text-[#d19e74] font-semibold">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-[#9c6544]">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -108,5 +109,5 @@ export default function FAQPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
